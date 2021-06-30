@@ -1,4 +1,4 @@
-# submission_1
+# YANA - Yet Another Notes App build using Flutter
 
 A new Flutter project.
 
