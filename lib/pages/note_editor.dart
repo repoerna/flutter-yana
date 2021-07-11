@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:submission_1/models/note.dart';
 import 'package:submission_1/models/notes_operation.dart';
@@ -54,6 +55,7 @@ class _NoteEditorState extends State<NoteEditor> {
         builder: (_, __, ___) => Hero(
           tag: "${_note.created!.millisecondsSinceEpoch}",
           child: Theme(
+            // Theme(
             data: Theme.of(context).copyWith(
               primaryColor: _noteColor,
               appBarTheme: Theme.of(context).appBarTheme.copyWith(
@@ -98,35 +100,29 @@ class _NoteEditorState extends State<NoteEditor> {
             children: <Widget>[
               IconButton(
                 onPressed: () {
-                  // print('on pressed ${_note.color}');
-
+                  print(_isModified);
                   if (_note.title == null && _note.content == null) {
-                    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
-                      content: Text(
-                        'Please insert some text!',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      backgroundColor: Colors.pink,
-                      duration: Duration(seconds: 1),
-                    ));
+                    Fluttertoast.showToast(
+                        msg: "Please insert some text",
+                        // toastLength: Toast.LENGTH_LONG,
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.SNACKBAR,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.red,
+                        textColor: Colors.white,
+                        fontSize: 16.0);
                   } else {
                     Provider.of<NotesOperation>(context, listen: false)
                         .addNewNote(_note);
                     Navigator.of(context).pop(true);
-                    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
-                      content: Text(
-                        'Notes created!',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      backgroundColor: Colors.lightGreen,
-                      duration: Duration(seconds: 1),
-                    ));
+                    Fluttertoast.showToast(
+                        msg: "Note created!",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.SNACKBAR,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.lightGreen,
+                        textColor: Colors.white,
+                        fontSize: 16.0);
                   }
                 },
                 icon: const Icon(Icons.save_alt),
@@ -149,7 +145,7 @@ class _NoteEditorState extends State<NoteEditor> {
           top: 15,
           left: 15,
           right: 15,
-          bottom: 80,
+          bottom: 15,
         ),
         child: Column(
           children: [

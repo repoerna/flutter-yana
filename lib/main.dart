@@ -11,14 +11,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // return MaterialApp(
-    //   theme: ThemeData(
-    //     brightness: Brightness.dark,
-    //     backgroundColor: Colors.blue[700],
-    //     accentColor: Colors.yellow,
-    //   ),
-    //   home: NoteAdd(),
-    // );
     return ChangeNotifierProvider(
       create: (context) => NotesOperation(),
       child: MaterialApp(

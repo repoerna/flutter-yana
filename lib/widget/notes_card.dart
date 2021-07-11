@@ -39,22 +39,20 @@ class NotesCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Flexible(
-                  child: Text(
-                    note.title ?? "",
-                    overflow: TextOverflow.fade,
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: note.color == Colors.black
-                          ? Colors.white
-                          : Colors.black,
-                    ),
+                Text(
+                  note.title ?? "",
+                  overflow: TextOverflow.fade,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: note.color == Colors.black
+                        ? Colors.white
+                        : Colors.black,
                   ),
                 ),
                 SizedBox(height: 10),
                 Expanded(
-                  flex: 1,
+                  // flex: 1,
                   child: Text(
                     note.content ?? "",
                     style: TextStyle(
