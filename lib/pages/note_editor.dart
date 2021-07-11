@@ -90,7 +90,6 @@ class _NoteEditorState extends State<NoteEditor> {
   Widget _buildBottomAppBar(BuildContext context) => BottomAppBar(
         color: Colors.transparent,
         elevation: 0,
-        // child: HorizontalColorPicker(),
         child: Container(
           height: 56.0,
           padding: const EdgeInsets.symmetric(horizontal: 9),
@@ -99,7 +98,7 @@ class _NoteEditorState extends State<NoteEditor> {
             children: <Widget>[
               IconButton(
                 onPressed: () {
-                  print('on pressed ${_note.color}');
+                  // print('on pressed ${_note.color}');
 
                   if (_note.title == null && _note.content == null) {
                     ScaffoldMessenger.of(context).showSnackBar(new SnackBar(

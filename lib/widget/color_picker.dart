@@ -47,10 +47,9 @@ class HorizontalColorPicker extends StatelessWidget {
                     ),
                     onTap: () {
                       if (color != _currColor(note)) {
-                        print("test");
-                        print(note.color);
+                        // print(note.color);
                         note.updateWith(color: color);
-                        print(note.color);
+                        // print(note.color);
                       }
                     },
                   ),

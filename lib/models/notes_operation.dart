@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:submission_1/models/note.dart';
 
 class NotesOperation with ChangeNotifier {
+  List<Note> _originalNote = [];
   List<Note> _notes = [];
 
   NotesOperation() {
@@ -14,21 +15,29 @@ class NotesOperation with ChangeNotifier {
     addNewNote(initialNote);
   }
 
+  set noteSearch(String searchTerm) {
+    if (searchTerm.isNotEmpty) {
+      filterNotes(searchTerm);
+    } else {
+      _notes = _originalNote;
+    }
+  }
+
   List<Note> get getNotes {
     return _notes;
   }
 
-  void addNewNote(Note note) {
-    print('Note on saved ${note.color}');
-    _notes.insert(0, note);
-    notifyListeners();
+  void filterNotes(String query) {
+    _notes = [];
+    _originalNote.forEach((element) {
+      if (element.title!.toLowerCase().contains(query)) {
+        _notes.add(element);
+      }
+    });
   }
 
-//   void addNewNote(String title, String content, Color color) {
-//     Note note =
-//         Note(title, content, color, NoteState.unspecified, DateTime.now());
-//     _notes.add(note);
-//     notifyListeners();
-//   }
-// }
+  void addNewNote(Note note) {
+    _originalNote.insert(0, note);
+    notifyListeners();
+  }
 }
